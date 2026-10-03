@@ -13,4 +13,6 @@ etiquetaBuscador.appendChild(buscador);
 seccion8.appendChild(etiquetaBuscador);
 
 // El evento "input" se dispara cada vez que cambia el texto del campo
-buscador.addEventListener("input", renderizar);
+buscador.addEventListener("input", () => {
+  renderizar();
+});

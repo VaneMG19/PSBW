@@ -2,14 +2,14 @@
 
 // Función de apoyo: crea una sección con su título y la agrega a la página.
 // Se reutiliza en los ejercicios 5 a 10.
-function crearSeccion(textoTitulo) {
+const crearSeccion = (textoTitulo) => {
   const seccion = document.createElement("section");
   const encabezado = document.createElement("h3");
   encabezado.textContent = textoTitulo;
   seccion.appendChild(encabezado);
   document.getElementById("extras").appendChild(seccion);
   return seccion;
-}
+};
 
 const seccion4 = crearSeccion("Ejercicio 4: Reorganizar página");
 
@@ -29,17 +29,17 @@ const nodoDescripcion = document.getElementById("descripcion");
 const nodoLista = zonaPagina.querySelector("ul");
 const nodoContenedores = document.getElementById("contenedor-tecnologias");
 
-// appendChild sobre un nodo existente lo MUEVE al final del padre
-botonReorganizar.addEventListener("click", function () {
-  zonaPagina.appendChild(nodoContenedores);
-  zonaPagina.appendChild(nodoTitulo);
-  zonaPagina.appendChild(nodoLista);
-  zonaPagina.appendChild(nodoDescripcion);
+// append() sobre un nodo que ya existe lo MUEVE al final de su padre
+botonReorganizar.addEventListener("click", () => {
+  zonaPagina.append(nodoContenedores);
+  zonaPagina.append(nodoTitulo);
+  zonaPagina.append(nodoLista);
+  zonaPagina.append(nodoDescripcion);
 });
 
-botonRestaurar.addEventListener("click", function () {
-  zonaPagina.appendChild(nodoTitulo);
-  zonaPagina.appendChild(nodoDescripcion);
-  zonaPagina.appendChild(nodoLista);
-  zonaPagina.appendChild(nodoContenedores);
+botonRestaurar.addEventListener("click", () => {
+  zonaPagina.append(nodoTitulo);
+  zonaPagina.append(nodoDescripcion);
+  zonaPagina.append(nodoLista);
+  zonaPagina.append(nodoContenedores);
 });

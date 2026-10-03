@@ -1,4 +1,4 @@
-
+# Practicando JavaScript (PSBW)
 
 ## Ejercicio 1: Construyendo HTML desde JavaScript
 
@@ -83,7 +83,7 @@
 3. **¿Ya los conocía?** no
 4. **¿Dificultades?** no mucho, tenia duas
 5. **¿Utilizaste IA?** no, bueno Sí, le pedi que me enseñara con un ejemplo.
-   - El evento `input` se dispara cada vez que cambia el contenido del campo, por lo que la búsqueda se actualiza en cada letra.
+  - El evento `input` se dispara cada vez que cambia el contenido del campo, por lo que la búsqueda se actualiza en cada letra.
    - `toLowerCase()` pasa a minúsculas para no distinguir mayúsculas. `includes(texto)` devuelve `true` si el nombre contiene el texto, lo que permite coincidencias parciales.
    - `continue` salta las tecnologías que no coinciden.
 

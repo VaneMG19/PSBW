@@ -19,15 +19,15 @@ formularioGithub.appendChild(botonBuscar);
 seccion10.appendChild(formularioGithub);
 seccion10.appendChild(resultado);
 
-function mostrarMensaje(texto, clase) {
+const mostrarMensaje = (texto, clase) => {
   resultado.textContent = "";
   const p = document.createElement("p");
   p.textContent = texto;
   p.className = clase;
   resultado.appendChild(p);
-}
+};
 
-function mostrarUsuario(datos) {
+const mostrarUsuario = (datos) => {
   resultado.textContent = ""; // reemplaza la búsqueda anterior
 
   const avatar = document.createElement("img");
@@ -38,8 +38,13 @@ function mostrarUsuario(datos) {
   const login = document.createElement("h3");
   login.textContent = datos.login;
 
+  // GitHub devuelve null en "name" si el usuario no tiene nombre real
+  let textoNombre = "No disponible";
+  if (datos.name !== null) {
+    textoNombre = datos.name;
+  }
   const nombreReal = document.createElement("p");
-  nombreReal.textContent = "Nombre real: " + (datos.name || "No disponible");
+  nombreReal.textContent = "Nombre real: " + textoNombre;
 
   const repos = document.createElement("p");
   repos.textContent = "Repositorios públicos: " + datos.public_repos;
@@ -55,17 +60,11 @@ function mostrarUsuario(datos) {
   enlace.textContent = "Ver perfil en GitHub";
   enlace.target = "_blank";
 
-  resultado.appendChild(avatar);
-  resultado.appendChild(login);
-  resultado.appendChild(nombreReal);
-  resultado.appendChild(repos);
-  resultado.appendChild(seguidores);
-  resultado.appendChild(siguiendo);
-  resultado.appendChild(enlace);
-}
+  resultado.append(avatar, login, nombreReal, repos, seguidores, siguiendo, enlace);
+};
 
 // Parte 2: capturar el envío del formulario
-formularioGithub.addEventListener("submit", async function (evento) {
+formularioGithub.addEventListener("submit", async (evento) => {
   evento.preventDefault(); // evita que el navegador recargue la página
 
   const usuario = campoUsuario.value.trim();
@@ -79,20 +78,20 @@ formularioGithub.addEventListener("submit", async function (evento) {
 
   // Partes 3, 4 y 5: petición, procesamiento y manejo de errores
   try {
-    const respuesta = await fetch("https://api.github.com/users/" + encodeURIComponent(usuario));
+    const response = await fetch("https://api.github.com/users/" + usuario);
 
-    if (respuesta.status === 404) {
+    if (response.status === 404) {
       mostrarMensaje('El usuario "' + usuario + '" no existe en GitHub.', "error");
       return;
     }
 
-    if (!respuesta.ok) {
-      mostrarMensaje("El servidor respondió con un error (código " + respuesta.status + ").", "error");
+    if (!response.ok) {
+      mostrarMensaje("El servidor respondió con un error (código " + response.status + ").", "error");
       return;
     }
 
-    const datos = await respuesta.json();
-    mostrarUsuario(datos);
+    const data = await response.json();
+    mostrarUsuario(data);
   } catch (error) {
     mostrarMensaje("No se pudo completar la petición. Revisa tu conexión a internet.", "error");
   }

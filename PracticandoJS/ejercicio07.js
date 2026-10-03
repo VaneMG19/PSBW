@@ -3,7 +3,7 @@ const seccion7 = crearSeccion("Ejercicio 7: Registrar una tecnología");
 const formularioTec = document.createElement("form");
 
 // Función de apoyo: crea una etiqueta con su campo de texto dentro del formulario
-function crearCampo(textoEtiqueta) {
+const crearCampo = (textoEtiqueta) => {
   const etiqueta = document.createElement("label");
   etiqueta.textContent = textoEtiqueta + ": ";
   const campo = document.createElement("input");
@@ -12,7 +12,7 @@ function crearCampo(textoEtiqueta) {
   formularioTec.appendChild(etiqueta);
   formularioTec.appendChild(document.createElement("br"));
   return campo;
-}
+};
 
 const campoNombre = crearCampo("Nombre");
 const campoDescripcion = crearCampo("Descripción");
@@ -28,7 +28,7 @@ const mensajeTec = document.createElement("p");
 seccion7.appendChild(formularioTec);
 seccion7.appendChild(mensajeTec);
 
-formularioTec.addEventListener("submit", function (evento) {
+formularioTec.addEventListener("submit", (evento) => {
   evento.preventDefault();
 
   const nombre = campoNombre.value.trim();
@@ -43,10 +43,8 @@ formularioTec.addEventListener("submit", function (evento) {
 
   tecnologias.push({ nombre: nombre, descripcion: descripcion, tipo: tipo });
 
-  // Si ya se cargó el ejercicio 9, se guarda en localStorage
-  if (typeof guardarTecnologias === "function") {
-    guardarTecnologias();
-  }
+  // guardarTecnologias() está definida en ejercicio09.js
+  guardarTecnologias();
 
   renderizar();
   formularioTec.reset();

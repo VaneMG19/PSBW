@@ -7,9 +7,10 @@ tituloH1.style.fontSize = "36px";
 tituloH1.style.textAlign = "center";
 
 const parrafosPagina = document.querySelectorAll("#descripcion p");
-for (const p of parrafosPagina) {
+
+parrafosPagina.forEach(p => {
   p.classList.add("parrafo-descripcion");
   p.style.backgroundColor = "#e8eefc";
   p.style.padding = "8px";
   p.style.marginBottom = "12px";
-}
+});

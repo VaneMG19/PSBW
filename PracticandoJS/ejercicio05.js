@@ -15,7 +15,7 @@ seccion5.appendChild(botonEliminar);
 seccion5.appendChild(mensajeLista);
 seccion5.appendChild(listaElementos);
 
-botonAgregar.addEventListener("click", function () {
+botonAgregar.addEventListener("click", () => {
   // El número siguiente es la cantidad actual de elementos + 1
   const numero = listaElementos.children.length + 1;
   const li = document.createElement("li");
@@ -24,12 +24,12 @@ botonAgregar.addEventListener("click", function () {
   mensajeLista.textContent = "";
 });
 
-botonEliminar.addEventListener("click", function () {
+botonEliminar.addEventListener("click", () => {
   const ultimo = listaElementos.lastElementChild;
   if (ultimo === null) {
     mensajeLista.textContent = "La lista está vacía, no hay elementos que eliminar.";
   } else {
-    listaElementos.removeChild(ultimo);
+    ultimo.remove();
     mensajeLista.textContent = "";
   }
 });

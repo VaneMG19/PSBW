@@ -1,8 +1,8 @@
 // Ejercicio 9: Estado y LocalStorage
-function guardarTecnologias() {
+const guardarTecnologias = () => {
   // localStorage solo guarda texto, por eso el arreglo se convierte a JSON
   localStorage.setItem("tecnologias", JSON.stringify(tecnologias));
-}
+};
 
 // Al cargar la página: ¿hay información guardada?
 const datosGuardados = localStorage.getItem("tecnologias");
@@ -17,8 +17,8 @@ const botonBorrar = document.createElement("button");
 botonBorrar.textContent = "Borrar datos guardados";
 seccion9.appendChild(botonBorrar);
 
-botonBorrar.addEventListener("click", function () {
+botonBorrar.addEventListener("click", () => {
   localStorage.removeItem("tecnologias");
-  tecnologias = [...tecnologiasIniciales];
+  tecnologias = tecnologiasIniciales.slice();
   renderizar();
 });

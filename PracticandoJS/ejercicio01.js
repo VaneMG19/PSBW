@@ -23,11 +23,12 @@ descripcion.appendChild(parrafo2);
 
 const lista = document.createElement("ul");
 const elementos = ["HTML", "CSS", "JavaScript", "DOM", "Git"];
-for (let i = 0; i < elementos.length; i++) {
+
+elementos.forEach(elemento => {
   const li = document.createElement("li");
-  li.textContent = elementos[i];
+  li.textContent = elemento;
   lista.appendChild(li);
-}
+});
 
 pagina.appendChild(titulo);
 pagina.appendChild(descripcion);

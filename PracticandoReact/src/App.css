@@ -1,0 +1,24 @@
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.tarjeta {
+  border: 1px solid #999;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.tarjeta p,
+.tarjeta h3 {
+  margin: 4px 0;
+}
+
+.error {
+  color: #b00020;
+}
+
+.ok {
+  color: #1b7a1b;
+}
